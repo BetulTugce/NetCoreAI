@@ -1,0 +1,45 @@
+﻿@model List<ResultCustomerDto>
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <br />
+    <a href="/Customer/CreateCustomer" class="btn btn-primary">Yeni Müşteri</a>
+    <br />
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>İsim Soyisim</th>
+                <th>Bakiye</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+           @*  @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name @customer.Surname</td>
+                    <td>@customer.Balance</td>
+                </tr>
+            } *@
+            @for (int i = 1; i < Model.Count +1; i++)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@Model[i - 1].Name @Model[i - 1].Surname</td>
+                    <td>@Model[i - 1].Balance</td>
+                    <td><a href="/Customer/DeleteCustomer/@Model[i - 1].Id" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Customer/UpdateCustomer/@Model[i - 1].Id" class="btn btn-success">Güncelle</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
