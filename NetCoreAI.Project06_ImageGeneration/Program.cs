@@ -4,10 +4,11 @@ class Program
 {
     public static async Task Main(string[] args)
     {
+        #region Open AI Dall E
         string apiKey = "your_api_key";
         Console.Write("Enter the prompt for image generation: ");
         string prompt = Console.ReadLine();
-        using(HttpClient client = new HttpClient())
+        using (HttpClient client = new HttpClient())
         {
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
             var requestBody = new
@@ -22,5 +23,8 @@ class Program
             string responseContent = await response.Content.ReadAsStringAsync();
             Console.WriteLine(responseContent);
         }
+        #endregion
+
+
     }
 }
